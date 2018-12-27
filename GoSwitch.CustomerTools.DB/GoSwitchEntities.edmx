@@ -1,0 +1,834 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GoSwitchProductionNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewCampaignCodes">
+          <Key>
+            <PropertyRef Name="CampaignCodeID" />
+          </Key>
+          <Property Name="CampaignCodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CampaignCodeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewCustomers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleID" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Suburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="FullAddress" Type="nvarchar" MaxLength="350" />
+          <Property Name="CustomerType" Type="nvarchar" MaxLength="3" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ABN" Type="nvarchar" MaxLength="20" />
+          <Property Name="NMI" Type="nvarchar" MaxLength="12" />
+          <Property Name="MIRN" Type="nvarchar" MaxLength="12" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="12" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="UnitNumber" Type="nvarchar" MaxLength="6" />
+          <Property Name="StreetNumber" Type="nvarchar" MaxLength="6" />
+          <Property Name="StreetType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDType" Type="int" />
+          <Property Name="IDNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsConcession" Type="bit" />
+          <Property Name="PrinciplePlaceOfResidence" Type="bit" />
+          <Property Name="ConcessionIssuerID" Type="int" />
+          <Property Name="ConcessionTypeID" Type="int" />
+          <Property Name="ConcessionCardNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="ConcessionStartDate" Type="date" />
+          <Property Name="ConcessionExpiryDate" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewDistributors">
+          <Key>
+            <PropertyRef Name="DistributorID" />
+          </Key>
+          <Property Name="DistributorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistributorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewEnergyTypes">
+          <Key>
+            <PropertyRef Name="EnergyTypeID" />
+          </Key>
+          <Property Name="EnergyTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnergyTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewPresales">
+          <Key>
+            <PropertyRef Name="PresaleID" />
+          </Key>
+          <Property Name="PresaleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="EnergyTypeID" Type="int" Nullable="false" />
+          <Property Name="IsMoving" Type="bit" />
+          <Property Name="MovingDate" Type="date" />
+          <Property Name="IsBill" Type="bit" />
+          <Property Name="ElecUsageID" Type="int" />
+          <Property Name="IsSolar" Type="bit" />
+          <Property Name="IsGasHeater" Type="bit" />
+          <Property Name="GasUsageID" Type="int" Nullable="false" />
+          <Property Name="ElecBillStartDate" Type="date" />
+          <Property Name="ElecBillEndDate" Type="date" />
+          <Property Name="PeakUsage" Type="float" />
+          <Property Name="OffPeakUsage" Type="float" />
+          <Property Name="Shoulder1" Type="float" />
+          <Property Name="Shoulder2" Type="float" />
+          <Property Name="ControlLoad1" Type="float" />
+          <Property Name="ControlLoad2" Type="float" />
+          <Property Name="GasBillStartDate" Type="date" />
+          <Property Name="GasBillEndDate" Type="date" />
+          <Property Name="GasUsageAmount" Type="float" />
+          <Property Name="ElecUsageAmount" Type="float" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewRetailers">
+          <Key>
+            <PropertyRef Name="RetailerID" />
+          </Key>
+          <Property Name="RetailerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RetailerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="ResCCEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="SMEEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="SMECCEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="UseFTP" Type="bit" />
+          <Property Name="ftpHostIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="ftpUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ftpPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="GetLead" Type="bit" />
+          <Property Name="IsEncrypted" Type="bit" />
+          <Property Name="EncryptionPassword" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="60" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="GreenEnergyAdditionCost" Type="float" />
+          <Property Name="IsContracted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewSaleTypes">
+          <Key>
+            <PropertyRef Name="SaleTypeID" />
+          </Key>
+          <Property Name="SaleTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleTypeCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SaleTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewStates">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewTitles">
+          <Key>
+            <PropertyRef Name="TitleID" />
+          </Key>
+          <Property Name="TitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleName" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewUsages">
+          <Key>
+            <PropertyRef Name="UsageID" />
+          </Key>
+          <Property Name="UsageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerType" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="EnergyTypeID" Type="int" Nullable="false" />
+          <Property Name="BillCycleID" Type="int" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="UsageLevel" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="UsageSize" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="UsageValue" Type="float" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GoSwitchProductionNewModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewCampaignCodes" EntityType="Self.NewCampaignCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewCustomers" EntityType="Self.NewCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewDistributors" EntityType="Self.NewDistributors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewEnergyTypes" EntityType="Self.NewEnergyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewPresales" EntityType="Self.NewPresales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewRetailers" EntityType="Self.NewRetailers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewSaleTypes" EntityType="Self.NewSaleTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewStates" EntityType="Self.NewStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewTitles" EntityType="Self.NewTitles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewUsages" EntityType="Self.NewUsages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GoSwitchProductionNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="NewCampaignCode">
+          <Key>
+            <PropertyRef Name="CampaignCodeID" />
+          </Key>
+          <Property Name="CampaignCodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampaignCodeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewCustomer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="ZipCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullAddress" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerType" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ABN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NMI" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MIRN" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UnitNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="StreetNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="StreetType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDType" Type="Int32" />
+          <Property Name="IDNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsConcession" Type="Boolean" />
+          <Property Name="PrinciplePlaceOfResidence" Type="Boolean" />
+          <Property Name="ConcessionIssuerID" Type="Int32" />
+          <Property Name="ConcessionTypeID" Type="Int32" />
+          <Property Name="ConcessionCardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ConcessionStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ConcessionExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewDistributor">
+          <Key>
+            <PropertyRef Name="DistributorID" />
+          </Key>
+          <Property Name="DistributorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistributorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewEnergyType">
+          <Key>
+            <PropertyRef Name="EnergyTypeID" />
+          </Key>
+          <Property Name="EnergyTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnergyTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewPresale">
+          <Key>
+            <PropertyRef Name="PresaleID" />
+          </Key>
+          <Property Name="PresaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="EnergyTypeID" Type="Int32" Nullable="false" />
+          <Property Name="IsMoving" Type="Boolean" />
+          <Property Name="MovingDate" Type="DateTime" Precision="0" />
+          <Property Name="IsBill" Type="Boolean" />
+          <Property Name="ElecUsageID" Type="Int32" />
+          <Property Name="IsSolar" Type="Boolean" />
+          <Property Name="IsGasHeater" Type="Boolean" />
+          <Property Name="GasUsageID" Type="Int32" Nullable="false" />
+          <Property Name="ElecBillStartDate" Type="DateTime" Precision="0" />
+          <Property Name="ElecBillEndDate" Type="DateTime" Precision="0" />
+          <Property Name="PeakUsage" Type="Double" />
+          <Property Name="OffPeakUsage" Type="Double" />
+          <Property Name="Shoulder1" Type="Double" />
+          <Property Name="Shoulder2" Type="Double" />
+          <Property Name="ControlLoad1" Type="Double" />
+          <Property Name="ControlLoad2" Type="Double" />
+          <Property Name="GasBillStartDate" Type="DateTime" Precision="0" />
+          <Property Name="GasBillEndDate" Type="DateTime" Precision="0" />
+          <Property Name="GasUsageAmount" Type="Double" />
+          <Property Name="ElecUsageAmount" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewRetailer">
+          <Key>
+            <PropertyRef Name="RetailerID" />
+          </Key>
+          <Property Name="RetailerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RetailerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ResCCEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SMEEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SMECCEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UseFTP" Type="Boolean" />
+          <Property Name="ftpHostIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ftpUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ftpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GetLead" Type="Boolean" />
+          <Property Name="IsEncrypted" Type="Boolean" />
+          <Property Name="EncryptionPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GreenEnergyAdditionCost" Type="Double" />
+          <Property Name="IsContracted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewSaleType">
+          <Key>
+            <PropertyRef Name="SaleTypeID" />
+          </Key>
+          <Property Name="SaleTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleTypeCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SaleTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewTitle">
+          <Key>
+            <PropertyRef Name="TitleID" />
+          </Key>
+          <Property Name="TitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NewUsage">
+          <Key>
+            <PropertyRef Name="UsageID" />
+          </Key>
+          <Property Name="UsageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerType" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnergyTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BillCycleID" Type="Int32" Nullable="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="UsageLevel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsageSize" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsageValue" Type="Double" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="GoSwitchProductionNewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="NewCampaignCodes" EntityType="Self.NewCampaignCode" />
+          <EntitySet Name="NewCustomers" EntityType="Self.NewCustomer" />
+          <EntitySet Name="NewDistributors" EntityType="Self.NewDistributor" />
+          <EntitySet Name="NewEnergyTypes" EntityType="Self.NewEnergyType" />
+          <EntitySet Name="NewPresales" EntityType="Self.NewPresale" />
+          <EntitySet Name="NewRetailers" EntityType="Self.NewRetailer" />
+          <EntitySet Name="NewSaleTypes" EntityType="Self.NewSaleType" />
+          <EntitySet Name="NewStates" EntityType="Self.NewState" />
+          <EntitySet Name="NewTitles" EntityType="Self.NewTitle" />
+          <EntitySet Name="NewUsages" EntityType="Self.NewUsage" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GoSwitchProductionNewModelStoreContainer" CdmEntityContainer="GoSwitchProductionNewEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewCampaignCodes">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewCampaignCode">
+              <MappingFragment StoreEntitySet="NewCampaignCodes">
+                <ScalarProperty Name="CampaignCodeID" ColumnName="CampaignCodeID" />
+                <ScalarProperty Name="CampaignCodeName" ColumnName="CampaignCodeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewCustomers">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewCustomer">
+              <MappingFragment StoreEntitySet="NewCustomers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ABN" ColumnName="ABN" />
+                <ScalarProperty Name="NMI" ColumnName="NMI" />
+                <ScalarProperty Name="MIRN" ColumnName="MIRN" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+                <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
+                <ScalarProperty Name="StreetType" ColumnName="StreetType" />
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+                <ScalarProperty Name="IsConcession" ColumnName="IsConcession" />
+                <ScalarProperty Name="PrinciplePlaceOfResidence" ColumnName="PrinciplePlaceOfResidence" />
+                <ScalarProperty Name="ConcessionIssuerID" ColumnName="ConcessionIssuerID" />
+                <ScalarProperty Name="ConcessionTypeID" ColumnName="ConcessionTypeID" />
+                <ScalarProperty Name="ConcessionCardNumber" ColumnName="ConcessionCardNumber" />
+                <ScalarProperty Name="ConcessionStartDate" ColumnName="ConcessionStartDate" />
+                <ScalarProperty Name="ConcessionExpiryDate" ColumnName="ConcessionExpiryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewDistributors">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewDistributor">
+              <MappingFragment StoreEntitySet="NewDistributors">
+                <ScalarProperty Name="DistributorID" ColumnName="DistributorID" />
+                <ScalarProperty Name="DistributorName" ColumnName="DistributorName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewEnergyTypes">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewEnergyType">
+              <MappingFragment StoreEntitySet="NewEnergyTypes">
+                <ScalarProperty Name="EnergyTypeID" ColumnName="EnergyTypeID" />
+                <ScalarProperty Name="EnergyTypeName" ColumnName="EnergyTypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewPresales">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewPresale">
+              <MappingFragment StoreEntitySet="NewPresales">
+                <ScalarProperty Name="PresaleID" ColumnName="PresaleID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="EnergyTypeID" ColumnName="EnergyTypeID" />
+                <ScalarProperty Name="IsMoving" ColumnName="IsMoving" />
+                <ScalarProperty Name="MovingDate" ColumnName="MovingDate" />
+                <ScalarProperty Name="IsBill" ColumnName="IsBill" />
+                <ScalarProperty Name="ElecUsageID" ColumnName="ElecUsageID" />
+                <ScalarProperty Name="IsSolar" ColumnName="IsSolar" />
+                <ScalarProperty Name="IsGasHeater" ColumnName="IsGasHeater" />
+                <ScalarProperty Name="GasUsageID" ColumnName="GasUsageID" />
+                <ScalarProperty Name="ElecBillStartDate" ColumnName="ElecBillStartDate" />
+                <ScalarProperty Name="ElecBillEndDate" ColumnName="ElecBillEndDate" />
+                <ScalarProperty Name="PeakUsage" ColumnName="PeakUsage" />
+                <ScalarProperty Name="OffPeakUsage" ColumnName="OffPeakUsage" />
+                <ScalarProperty Name="Shoulder1" ColumnName="Shoulder1" />
+                <ScalarProperty Name="Shoulder2" ColumnName="Shoulder2" />
+                <ScalarProperty Name="ControlLoad1" ColumnName="ControlLoad1" />
+                <ScalarProperty Name="ControlLoad2" ColumnName="ControlLoad2" />
+                <ScalarProperty Name="GasBillStartDate" ColumnName="GasBillStartDate" />
+                <ScalarProperty Name="GasBillEndDate" ColumnName="GasBillEndDate" />
+                <ScalarProperty Name="GasUsageAmount" ColumnName="GasUsageAmount" />
+                <ScalarProperty Name="ElecUsageAmount" ColumnName="ElecUsageAmount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewRetailers">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewRetailer">
+              <MappingFragment StoreEntitySet="NewRetailers">
+                <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+                <ScalarProperty Name="RetailerName" ColumnName="RetailerName" />
+                <ScalarProperty Name="ResEmail" ColumnName="ResEmail" />
+                <ScalarProperty Name="ResCCEmail" ColumnName="ResCCEmail" />
+                <ScalarProperty Name="SMEEmail" ColumnName="SMEEmail" />
+                <ScalarProperty Name="SMECCEmail" ColumnName="SMECCEmail" />
+                <ScalarProperty Name="UseFTP" ColumnName="UseFTP" />
+                <ScalarProperty Name="ftpHostIP" ColumnName="ftpHostIP" />
+                <ScalarProperty Name="ftpUserName" ColumnName="ftpUserName" />
+                <ScalarProperty Name="ftpPassword" ColumnName="ftpPassword" />
+                <ScalarProperty Name="GetLead" ColumnName="GetLead" />
+                <ScalarProperty Name="IsEncrypted" ColumnName="IsEncrypted" />
+                <ScalarProperty Name="EncryptionPassword" ColumnName="EncryptionPassword" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="GreenEnergyAdditionCost" ColumnName="GreenEnergyAdditionCost" />
+                <ScalarProperty Name="IsContracted" ColumnName="IsContracted" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewSaleTypes">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewSaleType">
+              <MappingFragment StoreEntitySet="NewSaleTypes">
+                <ScalarProperty Name="SaleTypeID" ColumnName="SaleTypeID" />
+                <ScalarProperty Name="SaleTypeCode" ColumnName="SaleTypeCode" />
+                <ScalarProperty Name="SaleTypeName" ColumnName="SaleTypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewStates">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewState">
+              <MappingFragment StoreEntitySet="NewStates">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewTitles">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewTitle">
+              <MappingFragment StoreEntitySet="NewTitles">
+                <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+                <ScalarProperty Name="TitleName" ColumnName="TitleName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewUsages">
+            <EntityTypeMapping TypeName="GoSwitchProductionNewModel.NewUsage">
+              <MappingFragment StoreEntitySet="NewUsages">
+                <ScalarProperty Name="UsageID" ColumnName="UsageID" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="EnergyTypeID" ColumnName="EnergyTypeID" />
+                <ScalarProperty Name="BillCycleID" ColumnName="BillCycleID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="UsageLevel" ColumnName="UsageLevel" />
+                <ScalarProperty Name="UsageSize" ColumnName="UsageSize" />
+                <ScalarProperty Name="UsageValue" ColumnName="UsageValue" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="GoSwitchProductionNewModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
