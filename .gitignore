@@ -12,3 +12,4 @@ packages/Antlr.3.5.0.2/lib/Antlr3.Runtime.pdb
 packages/bootstrap.3.3.7/bootstrap.3.3.7.nupkg
 packages/EntityFramework.6.2.0/tools/about_EntityFramework.help.txt
 packages/System.Diagnostics.DiagnosticSource.4.4.1/System.Diagnostics.DiagnosticSource.4.4.1.nupkg
+/.vs

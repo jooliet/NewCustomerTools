@@ -35,6 +35,38 @@ namespace GoSwitch.CustomerTools.Web
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        private const int PASSWORD_HISTORY_LIMIT = 3;
+
+        private async Task<bool> IsPasswordHistory(string userId, string newPassword)
+        {
+            var user = await FindByIdAsync(userId);
+            if (user.PasswordHistory.OrderByDescending(o => o.CreatedDate).Select(s => s.PasswordHash).Take(PASSWORD_HISTORY_LIMIT).Where(w => PasswordHasher.VerifyHashedPassword(w, newPassword) != PasswordVerificationResult.Failed).Any())
+                return true;
+            return false;
+        }
+
+        public Task AddToPasswordHistoryAsync(ApplicationUser user, string password)
+        {
+            user.PasswordHistory.Add(new PasswordHistory() { UserId = user.Id, PasswordHash = password });
+            return UpdateAsync(user);
+        }
+
+        public override async Task<IdentityResult> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
+        {
+            if (await IsPasswordHistory(userId, newPassword))
+                return await Task.FromResult(IdentityResult.Failed("Cannot reuse old password"));
+
+            var result = await base.ChangePasswordAsync(userId, currentPassword, newPassword);
+            if(result.Succeeded)
+            {
+                ApplicationUser user = await FindByIdAsync(userId);
+                user.PasswordHistory.Add(new PasswordHistory() { UserId = userId, PasswordHash = PasswordHasher.HashPassword(newPassword) });
+                return await UpdateAsync(user);
+
+            }
+            return result;
+        }
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
@@ -53,8 +85,8 @@ namespace GoSwitch.CustomerTools.Web
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequiredLength = 8,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,
@@ -81,9 +113,9 @@ namespace GoSwitch.CustomerTools.Web
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+            
             return manager;
         }
     }
