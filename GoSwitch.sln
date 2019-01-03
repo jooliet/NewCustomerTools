@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoSwitch.CustomerTools.Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoSwitch.CustomerTools.Web", "GoSwitch.CustomerTools.Web\GoSwitch.CustomerTools.Web.csproj", "{FE5F31A9-172E-435B-A1D7-C0EA2B581EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoSwitch.CustomerTools.API", "GoSwitch.CustomerTools.API\GoSwitch.CustomerTools.API.csproj", "{37483A01-A1D5-43EF-9D88-19F7AEF3304B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoSwitch.CustomerTools.Admin", "GoSwitch.CustomerTools.Admin\GoSwitch.CustomerTools.Admin.csproj", "{A050E2BD-965E-4A4A-961B-4E3E74C1E8FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoSwitch.CustomerTools.Models", "GoSwitch.CustomerTools.Models\GoSwitch.CustomerTools.Models.csproj", "{C8A6979D-A1CE-45B2-8BE2-342F75A7252B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,18 @@ Global
 		{FE5F31A9-172E-435B-A1D7-C0EA2B581EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5F31A9-172E-435B-A1D7-C0EA2B581EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5F31A9-172E-435B-A1D7-C0EA2B581EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37483A01-A1D5-43EF-9D88-19F7AEF3304B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37483A01-A1D5-43EF-9D88-19F7AEF3304B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37483A01-A1D5-43EF-9D88-19F7AEF3304B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37483A01-A1D5-43EF-9D88-19F7AEF3304B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A050E2BD-965E-4A4A-961B-4E3E74C1E8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A050E2BD-965E-4A4A-961B-4E3E74C1E8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A050E2BD-965E-4A4A-961B-4E3E74C1E8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A050E2BD-965E-4A4A-961B-4E3E74C1E8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8A6979D-A1CE-45B2-8BE2-342F75A7252B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8A6979D-A1CE-45B2-8BE2-342F75A7252B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8A6979D-A1CE-45B2-8BE2-342F75A7252B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8A6979D-A1CE-45B2-8BE2-342F75A7252B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
