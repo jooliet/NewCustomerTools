@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f0938c575e4e4af1aea7c70c66cb2239" Name="Diagram1">
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.AspNetRole" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.AspNetUser" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.PasswordHistory" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="GoSwitchProdNewModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GoSwitchProdNewModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GoSwitchProdNewModel.FK_dbo_PasswordHistories_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GoSwitchProdNewModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.NewCallCenter" Width="1.5" PointX="6.5" PointY="9.875" />
+        <EntityTypeShape EntityType="GoSwitchProdNewModel.UserAccount" Width="1.5" PointX="3" PointY="9.75" />
+        <AssociationConnector Association="GoSwitchProdNewModel.FK_dbo_AspNetUsers_dbo_UserAccounts_UserAccount_Id" />
+        <AssociationConnector Association="GoSwitchProdNewModel.FK_UserAccounts_NewCallCenters" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

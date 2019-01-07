@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -52,6 +53,7 @@
     <Compile Include="GenericRepository\IRepository.cs" />
     <Compile Include="GenericRepository\IRepositoryFactory.cs" />
     <Compile Include="GenericRepository\RepositoryBase.cs" />
+    <Compile Include="NewCallCenters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +64,10 @@
     <ProjectReference Include="..\GoSwitch.CustomerTools.DB\GoSwitch.CustomerTools.DB.csproj">
       <Project>{5f13f834-30ac-4ff3-bd44-441107d7b222}</Project>
       <Name>GoSwitch.CustomerTools.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoSwitch.CustomerTools.Models\GoSwitch.CustomerTools.Models.csproj">
+      <Project>{c8a6979d-a1ce-45b2-8be2-342f75a7252b}</Project>
+      <Name>GoSwitch.CustomerTools.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

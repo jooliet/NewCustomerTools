@@ -268,6 +268,13 @@
       <Project>{5f13f834-30ac-4ff3-bd44-441107d7b222}</Project>
       <Name>GoSwitch.CustomerTools.DB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GoSwitch.CustomerTools.Models\GoSwitch.CustomerTools.Models.csproj">
+      <Project>{c8a6979d-a1ce-45b2-8be2-342f75a7252b}</Project>
+      <Name>GoSwitch.CustomerTools.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

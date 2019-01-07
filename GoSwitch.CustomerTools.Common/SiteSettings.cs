@@ -11,7 +11,7 @@ namespace GoSwitch.CustomerTools.Common
     {
         public static string ConnectionString
         {
-            get { return ConfigurationManager.ConnectionStrings["GoSwitchProductionNewEntities"].ConnectionString; }
+            get { return ConfigurationManager.ConnectionStrings["GoSwitchEntities"].ConnectionString; }
         }
     }
 }

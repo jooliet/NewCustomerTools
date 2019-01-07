@@ -142,6 +142,8 @@ namespace GoSwitch.CustomerTools.Web.Controllers
         public ActionResult Register()
         {
             ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Id", "Name");
+            
+            ViewBag.CallCenters = new SelectList(DAL.NewCallCenters.GetAllCallCenters(), "CallCenterID", "CallCenterCode");
             return View();
         }
 

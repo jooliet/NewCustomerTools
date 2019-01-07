@@ -51,74 +51,56 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoSwitchEntities.Context.cs">
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GoSwitchDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoSwitchEntities.Context.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoSwitchEntities.cs">
+    <Compile Include="GoSwitchDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GoSwitchEntities.Designer.cs">
+    <Compile Include="GoSwitchDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GoSwitchEntities.edmx</DependentUpon>
+      <DependentUpon>GoSwitchDBModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NewCampaignCode.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+    <Compile Include="NewCallCenter.cs">
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NewCustomer.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewDistributor.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewEnergyType.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewPresale.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewRetailer.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewSaleType.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewState.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewTitle.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NewUsage.cs">
-      <DependentUpon>GoSwitchEntities.tt</DependentUpon>
+    <Compile Include="PasswordHistory.cs">
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>GoSwitchDBModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="GoSwitchEntities.edmx">
+    <EntityDeploy Include="GoSwitchDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GoSwitchEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>GoSwitchDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="GoSwitchEntities.edmx.diagram">
-      <DependentUpon>GoSwitchEntities.edmx</DependentUpon>
+    <None Include="GoSwitchDBModel.edmx.diagram">
+      <DependentUpon>GoSwitchDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -126,15 +108,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GoSwitchEntities.Context.tt">
+    <Content Include="GoSwitchDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GoSwitchEntities.edmx</DependentUpon>
-      <LastGenOutput>GoSwitchEntities.Context.cs</LastGenOutput>
+      <DependentUpon>GoSwitchDBModel.edmx</DependentUpon>
+      <LastGenOutput>GoSwitchDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="GoSwitchEntities.tt">
+    <Content Include="GoSwitchDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GoSwitchEntities.edmx</DependentUpon>
-      <LastGenOutput>GoSwitchEntities.cs</LastGenOutput>
+      <DependentUpon>GoSwitchDBModel.edmx</DependentUpon>
+      <LastGenOutput>GoSwitchDBModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
