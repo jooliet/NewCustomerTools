@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace GoSwitch.CustomerTools.Admin.Models
 {
@@ -64,21 +66,67 @@ namespace GoSwitch.CustomerTools.Admin.Models
 
     public class RegisterViewModel
     {
+        public string Id { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "First Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be less than 100 characters long.")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be less than 100 characters long.")]
+        public string LastName { get; set; }
+
+        public bool IsActive { get; set; }
+
+        [Required]
+        [Display(Name = "Call Center")]
+        public int CallCenterID { get; set; }
+
+        public SelectList CallCenterList
+        {
+            get
+            {
+                return new SelectList(DAL.NewCallCenters.GetAllCallCenters(), "CallCenterID", "CallCenterCode");
+            }
+        }
+
+        [Display(Name = "Supervisor ID")]
+        public string SupervisorId { get; set; }
+
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "User Roles")]
+        public string UserRoles { get; set; }
+
+        public SelectList RoleList
+        {
+            get
+            {
+                return new SelectList(DAL.UserRoles.GetAllRoles() , "Id", "Name");
+            }
+        }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password",  ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
     }
 
     public class ResetPasswordViewModel
@@ -96,7 +144,7 @@ namespace GoSwitch.CustomerTools.Admin.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

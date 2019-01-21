@@ -11,18 +11,18 @@ namespace GoSwitch.CustomerTools.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        private class HttpDataContextDataStore : IDataRepositoryStore
-        {
-            public object this[string key]
-            {
-                get { return HttpContext.Current.Items[key]; }
-                set { HttpContext.Current.Items[key] = value; }
-            }
-        }
+        //private class HttpDataContextDataStore : IDataRepositoryStore
+        //{
+        //    public object this[string key]
+        //    {
+        //        get { return HttpContext.Current.Items[key]; }
+        //        set { HttpContext.Current.Items[key] = value; }
+        //    }
+        //}
 
         protected void Application_Start()
         {
-            DataRepositoryStore.CurrentDataStore = new HttpDataContextDataStore();
+            //DataRepositoryStore.CurrentDataStore = new HttpDataContextDataStore();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GoSwitch.CustomerTools.Web.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoSwitch.CustomerTools.Web.Controllers
 {
@@ -138,10 +139,10 @@ namespace GoSwitch.CustomerTools.Web.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Super Admin")]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Id", "Name");
+            ViewBag.RoleNames= new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Id", "Name");
             
             ViewBag.CallCenters = new SelectList(DAL.NewCallCenters.GetAllCallCenters(), "CallCenterID", "CallCenterCode");
             return View();
@@ -150,37 +151,59 @@ namespace GoSwitch.CustomerTools.Web.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Super Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
 
-                var context = new ApplicationDbContext();
+                
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
                 ApplicationUser applicationUser;
-                int accountId = 1;
-                UserAccount account = context.Accounts.Find(accountId);
+
+                UserAccount account = context.Accounts.Where(x => x.Email == model.Email).FirstOrDefault();
                 if (account != null)
                 {
-                    applicationUser = new ApplicationUser { UserName = model.Email, Email = model.Email, UserAccount  = account, PhoneNumber = model.PhoneNumber };
-                    var result = await UserManager.CreateAsync(applicationUser, model.Password);
-                    if (result.Succeeded)
-                    {
-                        await SignInManager.SignInAsync(applicationUser, isPersistent: false, rememberBrowser: false);
-
-                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                        return RedirectToAction("Index", "Home");
-                    }
-                    AddErrors(result);
+                    ModelState.AddModelError("Register", "Account has already registered.");
                     return View(model);
+
                 }
-                ModelState.AddModelError("Register", "Account Code Not Found.");
+                account = new UserAccount();
+                account.FirstName = model.FirstName;
+                account.LastName = model.LastName;
+                account.Email = model.Email;
+                account.IsActive = true;
+                account.UserName = model.Email;
+                account.PhoneNumber = model.PhoneNumber;
+                account.CallCenterID = model.CallCenterID;
+                account.SupervisorID = string.Empty;
+
+                applicationUser = new ApplicationUser { UserName = model.Email, Email = model.Email, UserAccount = account, PhoneNumber = model.PhoneNumber };
+                var result = await userManager.CreateAsync(applicationUser, model.Password);
+                var userRole = roleManager.FindById(model.UserRoles);
+                if (userRole!=null)
+                {
+                    userManager.AddToRole(applicationUser.Id, userRole.Name);
+                }
+                if (result.Succeeded)
+                {
+
+                    context.SaveChanges();
+
+                    await SignInManager.SignInAsync(applicationUser, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
                 
             }
             // If we got this far, something failed, redisplay form

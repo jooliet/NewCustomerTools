@@ -39,14 +39,16 @@ namespace GoSwitch.CustomerTools.DAL
 
         public static NewCallCenter GetCallCenterByCode(string ccCode)
         {
-            var result = DataRepositoryFactory.CurrentRepository.GetAll<DB.NewCallCenter>().Where(x => x.IsActive && x.CallCenterCode == ccCode);
-            return result.FirstOrDefault();
+            NewCallCenter result;
+            GoSwitchEntities context = new GoSwitchEntities();
+            result = context.NewCallCenters.Where(x => x.IsActive && x.CallCenterCode == ccCode).FirstOrDefault();
+            return result;
+
         }
 
-        public static List<DB.NewCallCenter> GetAllCallCenters()
+        public static IEnumerable<DB.NewCallCenter> GetAllCallCenters()
         {
-            List<DB.NewCallCenter> result = DataRepositoryFactory.CurrentRepository.GetAll<DB.NewCallCenter>().ToList();
-            return result;
+            return DataRepositoryFactory.CurrentRepository.GetAll<NewCallCenter>().Where(x => x.IsActive).OrderBy(x => x.CallCenterName);
         }
     }
 }

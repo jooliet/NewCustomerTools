@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GoSwitch.CustomerTools.Admin.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GoSwitch.CustomerTools.Admin.Controllers
 {
@@ -17,12 +18,14 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext context;
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +37,9 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -120,7 +123,7 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -139,7 +142,12 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+
+            //ViewBag.RoleNames = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Id", "Name");
+
+            //ViewBag.CallCenters = new SelectList(DAL.NewCallCenters.GetAllCallCenters(), "CallCenterID", "CallCenterCode");
+            return View(model);
         }
 
         //
@@ -151,12 +159,44 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+
+
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+                ApplicationUser applicationUser;
+
+                UserAccount account = context.Accounts.Where(x => x.Email == model.Email).FirstOrDefault();
+                if (account != null)
+                {
+                    ModelState.AddModelError("Register", "Account has already registered.");
+                    return View(model);
+
+                }
+                account = new UserAccount();
+                account.FirstName = model.FirstName;
+                account.LastName = model.LastName;
+                account.Email = model.Email;
+                account.IsActive = true;
+                account.UserName = model.Email;
+                account.PhoneNumber = model.PhoneNumber;
+                account.CallCenterID = model.CallCenterID;
+                account.SupervisorID = string.Empty;
+
+                applicationUser = new ApplicationUser { UserName = model.Email, Email = model.Email, UserAccount = account, PhoneNumber = model.PhoneNumber };
+                var result = await userManager.CreateAsync(applicationUser, model.Password);
+                var userRole = roleManager.FindById(model.UserRoles);
+                if (userRole != null)
+                {
+                    userManager.AddToRole(applicationUser.Id, userRole.Name);
+                }
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    context.SaveChanges();
+
+                    await SignInManager.SignInAsync(applicationUser, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -166,8 +206,8 @@ namespace GoSwitch.CustomerTools.Admin.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
-            }
 
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }

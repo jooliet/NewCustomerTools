@@ -83,6 +83,8 @@ namespace GoSwitch.CustomerTools.Web.Models
 
         public bool IsActive { get; set; }
 
+
+
         [Required]
         [Display(Name = "Call Center")]
         public int CallCenterID { get; set; }

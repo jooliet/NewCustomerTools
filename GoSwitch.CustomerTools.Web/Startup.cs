@@ -24,10 +24,10 @@ namespace GoSwitch.CustomerTools.Web
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
                 var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-                if (!roleManager.RoleExists("Admin"))
+                if (!roleManager.RoleExists("Super Admin"))
                 {
                     var role = new IdentityRole();
-                    role.Name = "Admin";
+                    role.Name = "Super Admin";
                     roleManager.Create(role);
 
                     var account = new UserAccount();
@@ -35,16 +35,16 @@ namespace GoSwitch.CustomerTools.Web
                     account.LastName = "Admin";
                     account.Email = "anna@vevos.digital";
                     account.IsActive = true;
-                    account.UserName = account.Email;
+                    account.UserName = "anna@vevos.digital";
                     account.PhoneNumber = "04123456789";
                     account.CallCenterID = 1;
                     account.SupervisorID = string.Empty;
 
-
-                    var applicationUser = new ApplicationUser { UserName = account.FirstName, Email = account.Email, UserAccount = account, PhoneNumber = account.PhoneNumber };
+                    var applicationUser = new ApplicationUser { UserName = account.Email, Email = account.Email, UserAccount = account, PhoneNumber = account.PhoneNumber };
 
                     var chkUser = userManager.Create(applicationUser, "P@ssw0rd1");
-
+                    userManager.AddToRole(applicationUser.Id, "Super Admin");
+                    
                 }
 
                 if (!roleManager.RoleExists("Supervisor"))
@@ -76,7 +76,7 @@ namespace GoSwitch.CustomerTools.Web
                     roleManager.Create(role);
                 }
 
-
+                context.SaveChanges();
 
 
             }

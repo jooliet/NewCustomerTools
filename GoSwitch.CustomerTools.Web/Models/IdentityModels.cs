@@ -91,6 +91,8 @@ namespace GoSwitch.CustomerTools.Web.Models
 
         public DbSet<UserAccount> Accounts { get; set; }
 
+        
+
     }
 
     

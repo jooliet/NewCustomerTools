@@ -55,6 +55,7 @@
     <Compile Include="GenericRepository\RepositoryBase.cs" />
     <Compile Include="NewCallCenters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRoles.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoSwitch.CustomerTools.Common\GoSwitch.CustomerTools.Common.csproj">

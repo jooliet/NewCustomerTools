@@ -244,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DataAnnotations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -257,6 +258,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoSwitch.CustomerTools.DAL\GoSwitch.CustomerTools.DAL.csproj">
+      <Project>{e9236343-b9e5-48d8-800a-c053507b9b26}</Project>
+      <Name>GoSwitch.CustomerTools.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoSwitch.CustomerTools.DB\GoSwitch.CustomerTools.DB.csproj">
+      <Project>{5f13f834-30ac-4ff3-bd44-441107d7b222}</Project>
+      <Name>GoSwitch.CustomerTools.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
