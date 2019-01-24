@@ -22,5 +22,19 @@ namespace GoSwitch.CustomerTools.Common
             Medium = 2, 
             High = 3
         }
+
+        public enum EnumEnergyType
+        {
+            Electricity = 0, 
+            Gas = 1, 
+            Dual = 2,
+            Internet = 3
+        }
+
+        public enum EnumCustomerType
+        {
+            Residential = 1,
+            Business = 2
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace GoSwitch.CustomerTools.Web.Models
         public string StreetNumber { get; set; }
         public string FullAddress { get; set; }
 
-        public string CustomerType { get; set; }            //Business or Residential 
+        public EnumCustomerType CustomerType { get; set; }            //Business or Residential 
 
-        public string EnergyType { get; set; }              //Electricity, Gas or Dual
+        public EnumEnergyType EnergyType { get; set; }              //Electricity, Gas or Dual
 
         public bool IsTransfer { get; set; }                //true for Transfer, false for Moving in
 
