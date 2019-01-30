@@ -27,7 +27,7 @@ namespace GoSwitch.CustomerTools.DB
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public int CallCenterID { get; set; }
-        public string SupervisorID { get; set; }
+        public int SupervisorID { get; set; }
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
